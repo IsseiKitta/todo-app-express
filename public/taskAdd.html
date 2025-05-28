@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div>
+        <img src="" alt="" />
+        <h1>TODO APP</h1>
+      </div>
+    </header>
+    <main>
+      <div>
+        <section>
+          <header>
+            <h1>新しいタスクを追加</h1>
+            <p>何を達成したいですか？詳細を入力してください。</p>
+          </header>
+          <form action="/api/addTask" , method="POST">
+            <div class="formGroup">
+              <label for="">タスク名<span></span></label>
+              <input type="text" />
+              <small>タスク内容</small>
+            </div>
+            <div class="formGroup">
+              <label for="">詳細</label>
+              <textarea name="textDescription" id="textDescription"></textarea>
+              <small>タスクの補足情報</small>
+            </div>
+            <div class="formGroup">
+              <label for="">期限日</label>
+              <input type="date" />
+              <small>タスク完了日を選択</small>
+            </div>
+            <div class="formGroup">
+              <label for="">優先度</label>
+              <select name="taskPriority" id="taskPriority">
+                <option value="high">高</option>
+                <option value="medium">中</option>
+                <option value="low">低</option>
+              </select>
+              <small>タスクの優先度を入力</small>
+            </div>
+            <div class="formActions">
+              <button type="submit">タスクを追加する</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <div>
+        <p>2025 マイタスクアプリ. All rights reverved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
