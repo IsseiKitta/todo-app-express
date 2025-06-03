@@ -1,0 +1,38 @@
+networks:
+  starter:
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: starter-db
+    restart: "no"
+    env_file:
+      - ./.env
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./starter-mysql-data:/var/lib/mysql
+    networks:
+      - starter
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: starter-app
+    ports:
+      - 3001:3000
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - starter
+    depends_on:
+      - db
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=db
+      - DB_USER=${MYSQL_USER}
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+      - DB_NAME=${MYSQL_DATABASE}
+      - DB_PORT=3306
+      - PORT=3000 # アプリケーションがリッスンするポート (DockerfileのEXPOSEと合わせる)
